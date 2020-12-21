@@ -1,7 +1,7 @@
 # FSNS Dataset Creator
 
 ### Setup
-Clone reposutory and run
+Clone repository and run
 
 ```
 pip install -r requirements.txt
