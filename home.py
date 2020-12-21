@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QApplication, QFileDialog, QWidget, QLabel, QVBoxLay
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QRect, Qt
 import os
+from sys import platform
 
 
 class MyCustomItem(QWidget):
@@ -127,7 +128,10 @@ class HomeWindow(QMainWindow):
             for fichier in allfiles[:]:
                 if not (fichier.endswith(".png")) and not (fichier.endswith(".jpg")):
                     allfiles.remove(fichier)
-            allfiles.sort(key=lambda x: os.stat(os.path.join(folder_path, x)).st_mtime, reverse=True)
+            if platform == "win32":
+                allfiles.sort(key=lambda x: os.stat(os.path.join(folder_path, x)).st_ctime, reverse=True)
+            else:
+                allfiles.sort(key=lambda x: os.stat(os.path.join(folder_path, x)).st_mtime, reverse=True)
             for i in reversed(range(self.verticalLayout.count())):
                 widgetToRemove = self.verticalLayout.itemAt(i).widget()
                 self.verticalLayout.removeWidget(widgetToRemove)
