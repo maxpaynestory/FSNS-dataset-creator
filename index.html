@@ -6,111 +6,301 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Chokas Apps — AI Video &amp; Image Production</title>
 
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
-    <title>Chokas Apps</title>
-
-
-    <!-- ===============================================-->
-    <!--    Favicons-->
-    <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#080035">
 
-
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
     <link href="assets/css/theme.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 
+    <style>
+      /* ---- Brand tokens pulled from the real logo, not the theme default blue ---- */
+      :root {
+        --chokas-navy: #080035;
+        --chokas-gold: #FFC200;
+      }
+      body { font-family: 'Rubik', sans-serif; }
+
+      .navbar { background: #fff; }
+      .navbar-brand img { height: 34px; }
+
+      .btn-chokas {
+        background: var(--chokas-navy);
+        color: #fff;
+        border: none;
+        font-weight: 500;
+        padding: .65rem 1.5rem;
+        border-radius: 6px;
+        transition: background .2s ease;
+      }
+      .btn-chokas:hover { background: #14004f; color: #fff; }
+
+      .text-gold { color: var(--chokas-gold); }
+      .bg-navy { background: var(--chokas-navy); }
+
+      .hero { padding: 7rem 0 5rem; }
+      .hero h1 { font-weight: 600; line-height: 1.15; color: var(--chokas-navy); }
+      .hero h1 span { color: var(--chokas-gold); background: var(--chokas-navy); padding: 0 .3rem; border-radius: 4px; }
+
+      .placeholder-media {
+        aspect-ratio: 16/10;
+        background: repeating-linear-gradient(45deg, #f1f1f4, #f1f1f4 12px, #e6e6ec 12px, #e6e6ec 24px);
+        border: 1px dashed #c9c9d6;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8a8aa3;
+        font-size: .85rem;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .proof-strip { border-top: 1px solid #ececf2; border-bottom: 1px solid #ececf2; padding: 2rem 0; }
+      .proof-strip .stat-num { font-weight: 700; font-size: 2rem; color: var(--chokas-navy); }
+      .proof-strip .stat-label { font-size: .8rem; color: #6b6b80; text-transform: uppercase; letter-spacing: .04em; }
+
+      .work-grid .placeholder-media { margin-bottom: .75rem; }
+      .work-grid .cap { font-size: .85rem; color: #6b6b80; }
+
+      .capability-pill {
+        display: inline-block;
+        border: 1px solid #dcdce6;
+        border-radius: 999px;
+        padding: .35rem 1rem;
+        font-size: .85rem;
+        margin: .25rem;
+        color: var(--chokas-navy);
+      }
+
+      .quote-card { background: #f8f8fb; border-radius: 10px; padding: 1.75rem; height: 100%; }
+      .quote-card p.quote-text { font-style: italic; color: #34344a; }
+      .quote-card .attrib { font-size: .85rem; color: #6b6b80; }
+
+      .cta-band { padding: 4.5rem 0; }
+      .cta-band h2 { color: #fff; font-weight: 600; }
+      .cta-band .btn-outline-gold {
+        border: 1.5px solid var(--chokas-gold);
+        color: var(--chokas-gold);
+        background: transparent;
+        padding: .65rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+      .cta-band .btn-outline-gold:hover { background: var(--chokas-gold); color: var(--chokas-navy); }
+
+      .placeholder-tag {
+        display: inline-block;
+        background: #fff3cf;
+        color: #7a5b00;
+        font-size: .7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        padding: .15rem .5rem;
+        border-radius: 4px;
+        margin-bottom: .5rem;
+      }
+
+      /* Bootstrap's .ratio utility only ships 1x1/4x3/16x9/21x9 — 9:16 (vertical/Shorts) needs a manual pair.
+         This theme's compiled CSS uses --aspect-ratio (not the newer --bs-aspect-ratio), confirmed in theme.css */
+      .ratio-9x16 { --aspect-ratio: 177.78%; }
+    </style>
   </head>
 
 
   <body>
 
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
     <main class="main" id="top">
+
+      <!-- ============================================ NAV ============================================ -->
       <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/icons/logo.png" /></a>
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="assets/img/icons/logo.png" alt="Chokas Apps" /></a>
           <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto border-bottom border-lg-bottom-0 pt-2 pt-lg-0">
-              <li class="nav-item"><a class="nav-link active active" aria-current="page" href="about_us.html">About</a></li>
+            <ul class="navbar-nav mx-auto pt-2 pt-lg-0">
+              <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
             </ul>
+            <a href="#contact" class="btn btn-chokas ms-lg-3">Get in touch</a>
           </div>
         </div>
       </nav>
 
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="pb-6">
-
+      <!-- ============================================ HERO ============================================ -->
+      <section class="hero">
         <div class="container">
           <div class="row flex-center">
-            <div class="col-lg-6 col-md-5 order-md-1"><img class="img-fluid" src="assets/img/illustrations/1.png" alt="" /></div>
-            <div class="col-md-7 col-lg-6 mt-5 text-center text-md-start">
-              <h1 class="fw-medium">Coming Soon</h1>
+            <div class="col-lg-6 order-lg-2">
+              <div class="ratio ratio-16x9" style="border-radius:10px; overflow:hidden;">
+                <iframe src="https://www.youtube-nocookie.com/embed/4prCODD5Dc4?rel=0&modestbranding=1" title="Chokas Apps — hero reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1 mt-5 mt-lg-0 text-center text-lg-start">
+              <h1 class="display-5">AI-generated product &amp; short-form video —<br><span>studio quality, days not weeks</span></h1>
+              <p class="fs-4 text-700 mt-3">I help brands and agencies produce scroll-stopping product and short-form video using ComfyUI, LoRA, Seedance and Higgsfield — studio-quality results without the cost or wait of a traditional shoot.</p>
+              <div class="mt-4">
+                <a href="#contact" class="btn btn-chokas btn-lg me-2">Start a project</a>
+                <a href="#work" class="btn btn-link text-decoration-none">See the work &darr;</a>
+              </div>
             </div>
           </div>
-        </div><!-- end of .container-->
-
+        </div>
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
 
+      <!-- ============================================ PROOF STRIP ============================================ -->
+      <section class="proof-strip">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-6 col-md-3">
+              <div class="stat-num">57</div>
+              <div class="stat-label">Jobs delivered</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="stat-num">856</div>
+              <div class="stat-label">Hours worked</div>
+            </div>
+            <div class="col-6 col-md-3 mt-4 mt-md-0">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Job success</div>
+            </div>
+            <div class="col-6 col-md-3 mt-4 mt-md-0">
+              <div class="stat-num">Top Rated</div>
+              <div class="stat-label">Upwork status</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
+      <!-- ============================================ WORK GRID ============================================ -->
+      <section id="work" class="py-6">
+        <div class="container">
+          <div class="row mb-4">
+            <div class="col-lg-7">
+              <h2 class="fw-medium" style="color:var(--chokas-navy)">Recent work</h2>
+              <p class="text-700">A mix of narrative video, product photography, and AI-native short-form content — built for brands, agencies, and campaigns.</p>
+            </div>
+          </div>
+          <div class="row work-grid g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="ratio ratio-9x16 mb-2" style="border-radius:10px; overflow:hidden; max-height:340px;">
+                <iframe src="https://www.youtube-nocookie.com/embed/obAd08gQUyE?rel=0&modestbranding=1" title="What if gravity disappears — AI short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="cap">Concept short — "What if gravity disappears," AI-generated short-form video</div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.behance.net/gallery/253730961/AI-lifestyle-photos-featuring-a-product" target="_blank" rel="noopener" class="text-decoration-none">
+                <div class="placeholder-media">AI lifestyle photos featuring a product<br><small>View case study on Behance &rarr;</small></div>
+              </a>
+              <div class="cap">Product photography — AI-generated lifestyle shots built around a real product</div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.behance.net/gallery/252276617/AI-Video-with-script-characters-Dialogues-location" target="_blank" rel="noopener" class="text-decoration-none">
+                <div class="placeholder-media">AI video with script, characters, dialogue, location<br><small>View case study on Behance &rarr;</small></div>
+              </a>
+              <div class="cap">Narrative video — full script, character consistency, dialogue and location built with AI</div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.behance.net/gallery/252319765/AI-UGC-Ads-for-Tiktok-Meta" target="_blank" rel="noopener" class="text-decoration-none">
+                <div class="placeholder-media">AI UGC ads for TikTok &amp; Meta<br><small>View case study on Behance &rarr;</small></div>
+              </a>
+              <div class="cap">Ad creative — UGC-style AI video built for paid TikTok and Meta placements</div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.behance.net/gallery/251477453/AI-virtual-Influencer-Tiktok-reels" target="_blank" rel="noopener" class="text-decoration-none">
+                <div class="placeholder-media">AI virtual influencer — TikTok reels<br><small>View case study on Behance &rarr;</small></div>
+              </a>
+              <div class="cap">Virtual influencer — consistent AI persona across a series of TikTok reels</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
-
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="bg-200 pt-9 pb-0">
-
+      <!-- ============================================ CAPABILITIES ============================================ -->
+      <section class="bg-200 py-6">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-lg-4 mb-3"><a href="#"><img class="d-inline-block align-middle" src="assets/img/icons/logo.png" alt="" /></a>
-              <p class="text-400 my-3">&copy; 2021 Chokas Apps</p>
+            <div class="col-lg-6">
+              <h2 class="fw-medium" style="color:var(--chokas-navy)">How it works</h2>
+              <p class="text-700">Using the same AI pipelines studios use for VFX — ComfyUI, custom LoRA training, Seedance and Higgsfield — I turn a brief and a few reference images into finished video or photography, usually in days rather than weeks.</p>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+              <span class="capability-pill">ComfyUI pipelines</span>
+              <span class="capability-pill">Custom LoRA training</span>
+              <span class="capability-pill">Seedance</span>
+              <span class="capability-pill">Higgsfield</span>
+              <span class="capability-pill">Short-form / UGC style</span>
+              <span class="capability-pill">Product &amp; model shots</span>
             </div>
           </div>
-        </div><!-- end of .container-->
-
+        </div>
       </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
 
+
+      <!-- ============================================ TESTIMONIALS ============================================ -->
+      <section class="py-6">
+        <div class="container">
+          <h2 class="fw-medium mb-4 text-center" style="color:var(--chokas-navy)">What clients say</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="quote-card">
+                <p class="quote-text">"It was a pleasure to work with Usama. Pure professional, great ideas!"</p>
+                <p class="attrib">— Client, AI-generated personalized children's book project</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="quote-card">
+                <p class="quote-text">"Very patient working through my requests until we got a final great product done."</p>
+                <p class="attrib">— Client, AI video editing &amp; realistic avatar lip-sync</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="quote-card">
+                <p class="quote-text">"Reliable talent with deep understanding of the technology."</p>
+                <p class="attrib">— Client, ComfyUI workflow integration &amp; API consultation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================ CTA / CONTACT ============================================ -->
+      <section id="contact" class="cta-band bg-navy">
+        <div class="container text-center">
+          <h2>Have a project in mind?</h2>
+          <p class="text-white-50 fs-5 mt-2">Send a brief or a few reference images — I'll reply with a quick take and a rough timeline.</p>
+          <a href="mailto:chokasapps@gmail.com" class="btn btn-outline-gold btn-lg mt-3">chokasapps@gmail.com</a>
+        </div>
+      </section>
+
+
+      <!-- ============================================ FOOTER ============================================ -->
+      <section class="pt-6 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-4 mb-3">
+              <a href="#"><img class="d-inline-block align-middle" src="assets/img/icons/logo.png" alt="" /></a>
+              <p class="text-400 my-3">&copy; 2026 Chokas Apps</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
-    <!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
 
-
-
-
-    <!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
     <script src="vendors/@popperjs/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/is/is.min.js"></script>
-    <script src="//polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="assets/js/theme.js"></script>
-
-    <link href="//fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
   </body>
 
 </html>
